@@ -9,6 +9,7 @@ app.use(express.urlencoded({ encoded: true }));
 app.use(express.static(path.join(__dirname, "frontend")));
 
 app.use("/login", require("./routes/login"));
+app.use("/create", require("./routes/create"));
 
 app.listen(3000, () => {
   console.log("Listening on http://localhost:3000");

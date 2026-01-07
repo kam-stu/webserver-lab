@@ -2,10 +2,9 @@ const { Pool } = require("pg");
 
 // Intentionally hardcoded credentials for lab
 const pool = new Pool({
-  user: "labuser",
-  host: "localhost",
+  user: "kam",
+  host: "/var/run/postgresql",
   database: "insecurelab",
-  password: "labpass",
   port: 5432
 });
 
