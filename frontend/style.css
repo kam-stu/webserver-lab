@@ -1,0 +1,129 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #fafafa;
+  margin: 0;
+}
+
+header {
+  background: white;
+  border-bottom: 1px solid #ddd;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Rainbow logo inspired by your reference image */
+.logo {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 900;
+  letter-spacing: 0.2px;
+
+  background: linear-gradient(
+    90deg,
+    #ff4aa2,
+    #ff8a00,
+    #ffd400,
+    #35d07f,
+    #1fb6ff,
+    #8b5cf6
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+
+  /* subtle pop like the reference */
+  text-shadow: 0 1px 0 rgba(0,0,0,0.06);
+}
+
+.add-post-btn {
+  text-decoration: none;
+  font-weight: bold;
+  color: #3897f0;
+}
+
+#feed {
+  max-width: 500px;
+  margin: 30px auto;
+}
+
+.post {
+  background: white;
+  border: 1px solid #ddd;
+  margin-bottom: 25px;
+}
+
+.post img {
+  width: 100%;
+  display: block;
+}
+
+.post-content {
+  padding: 10px;
+}
+
+.like-section {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.like-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.form-container {
+  max-width: 400px;
+  margin: 40px auto;
+  background: white;
+  padding: 20px;
+  border: 1px solid #ddd;
+}
+
+.page-title {
+  margin: 0 0 14px 0;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+input, textarea, button {
+  width: 100%;
+  margin-bottom: 12px;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.primary-btn {
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+  border-radius: 8px;
+  background: #3897f0;
+  color: white;
+}
+
+.secondary-btn {
+  border: 1px solid #ddd;
+  cursor: pointer;
+  font-weight: 700;
+  border-radius: 8px;
+  background: white;
+}
+
+/* Empty feed state */
+.empty-state {
+  background: white;
+  border: 1px dashed #ddd;
+  padding: 18px;
+  text-align: center;
+  color: #666;
+}
