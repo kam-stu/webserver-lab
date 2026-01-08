@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Umagram Admin</title>
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+<header>
+  <h1> Umagram Admin Panel</h1>
+  <button onclick="goBack()">⬅ Back</button>
+</header>
+
+<section>
+  <h2>All Users</h2>
+  <button onclick="loadUsers()">Load Users</button>
+  <pre id="users"></pre>
+</section>
+
+<section>
+  <h2>All Posts</h2>
+  <button onclick="loadPosts()">Load Posts</button>
+  <pre id="posts"></pre>
+</section>
+
+<section>
+  <h2>Delete User</h2>
+  <input id="deleteUserId" placeholder="User ID">
+  <button class="danger" onclick="deleteUser()">Delete User</button>
+</section>
+
+<section>
+  <h2>Delete Post</h2>
+  <input id="deletePostId" placeholder="Post ID">
+  <button class="danger" onclick="deletePost()">Delete Post</button>
+</section>
+
+<script>
+  function goBack() {
+    window.location.href = "/";
+  }
+
+  async function loadUsers() {
+    const res = await fetch("/search_users");
+    const data = await res.json();
+    document.getElementById("users").textContent =
+      JSON.stringify(data, null, 2);
+  }
+
+  async function loadPosts() {
+    const res = await fetch("/search_posts");
+    const data = await res.json();
+    document.getElementById("posts").textContent =
+      JSON.stringify(data, null, 2);
+  }
+
+  async function deleteUser() {
+    const id = document.getElementById("deleteUserId").value;
+    if (!id) return alert("User ID required");
+
+    await fetch("/delete_user", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ user_id: id })
+    });
+
+    alert("User deleted (maybe)");
+    loadUsers();
+    loadPosts();
+  }
+
+  async function deletePost() {
+    const id = document.getElementById("deletePostId").value;
+    if (!id) return alert("Post ID required");
+
+    await fetch("/delete_post", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ post_id: id })
+    });
+
+    alert("Post deleted (maybe)");
+    loadPosts();
+  }
+</script>
+
+</body>
+</html>
+
