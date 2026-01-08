@@ -94,50 +94,6 @@ button:hover {
   background: #3897f0;
 }
 
-/* PASSWORD FIELD */
-.password-field {
-  position: relative;
-  width: 100%;
-}
-
-.password-field input {
-  width: 100%;
-  padding: 12px 40px 12px 12px; /* leave space for button */
-  border-radius: 5px;
-  border: 1px solid #333;
-  background: #121212;
-  color: #f1f1f1;
-  box-sizing: border-box;
-}
-
-.password-field input::placeholder {
-  color: #888;
-}
-
-/* Eye toggle button aligned to right */
-.toggle-password {
-  position: absolute;
-  right: 8px;
-  top: 50%;
-  transform: translateY(-50%);
-  border: none;
-  background: #333;
-  color: #f1f1f1;
-  font-size: 14px;
-  cursor: pointer;
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-}
-
-.toggle-password:hover {
-  background: #555;
-}
-
 /* CREATE POST FORM */
 .post-form {
   display: flex;
@@ -163,7 +119,7 @@ button:hover {
 }
 
 .post-form input[type="file"] {
-  display: none;
+  display: none; /* hide default file input */
 }
 
 /* FEED CARD */

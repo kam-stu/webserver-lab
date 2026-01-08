@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>Umagram</title>
@@ -7,38 +7,106 @@
 </head>
 <body>
 
-<h1>📸 Umagram (Insecure)</h1>
+<!-- AUTH CONTAINER -->
+<div id="auth-container">
+  <h1>📸 Umagram</h1>
 
-<section>
-  <h2>Create Account</h2>
-  <input id="newUser" placeholder="username">
-  <input id="newPass" placeholder="password">
-  <button onclick="createUser()">Create</button>
-</section>
+  <!-- Toggle login/signup -->
+  <div id="auth-toggle">
+    <button id="login-btn" class="active" onclick="showLogin()">Login</button>
+    <button id="signup-btn" onclick="showSignup()">Sign Up</button>
+  </div>
 
-<section>
-  <h2>Login</h2>
-  <input id="loginUser" placeholder="username">
-  <input id="loginPass" placeholder="password">
-  <button onclick="login()">Login</button>
-</section>
+  <!-- LOGIN FORM -->
+  <div id="login-section">
+    <input id="loginUser" placeholder="Username">
+    <div class="password-field">
+      <input type="password" id="loginPass" placeholder="Password">
+      <button type="button" class="toggle-password" onclick="togglePassword('loginPass')">👁</button>
+    </div>
+    <button onclick="login()">Login</button>
+  </div>
 
-<section>
-  <h2>Create Post</h2>
-  <input id="userId" placeholder="user_id">
-  <input id="caption" placeholder="caption">
-  <input id="image" type="file">
-  <button onclick="createPost()">Post</button>
-</section>
+  <!-- SIGNUP FORM -->
+  <div id="signup-section" style="display:none;">
+    <input id="newUser" placeholder="Username">
+    <div class="password-field">
+      <input type="password" id="newPass" placeholder="Password">
+      <button type="button" class="toggle-password" onclick="togglePassword('newPass')">👁</button>
+    </div>
+    <button onclick="createUser()">Sign Up</button>
+  </div>
+</div>
 
-<section>
-  <h2>Feed</h2>
-  <a href="/feed" target="_blank">Open Feed</a>
-</section>
+<!-- MAIN CONTAINER -->
+<div id="main-container" style="display:none;">
+  <header>
+    <h1>📸 Umagram</h1>
+    <button onclick="logout()">Logout</button>
+  </header>
 
+  <!-- CREATE POST -->
+  <section id="create-post-section">
+    <h2>Create Post</h2>
+    <div class="post-form">
+      <input id="caption" placeholder="What's on your mind?">
+      <label class="custom-file-upload">
+        <input id="image" type="file">
+        📷 Browse Image
+      </label>
+      <button onclick="createPost()">Post</button>
+    </div>
+  </section>
+
+  <!-- FEED -->
+  <section id="feed-section">
+    <h2>Feed</h2>
+    <div id="feed"></div>
+  </section>
+</div>
+
+<!-- SCRIPTS -->
 <script src="auth.js"></script>
 <script src="post.js"></script>
+<script src="feed.js"></script>
+<script>
+  // Toggle login/signup
+  function showLogin() {
+    document.getElementById("login-section").style.display = "block";
+    document.getElementById("signup-section").style.display = "none";
+    document.getElementById("login-btn").classList.add("active");
+    document.getElementById("signup-btn").classList.remove("active");
+  }
 
+  function showSignup() {
+    document.getElementById("login-section").style.display = "none";
+    document.getElementById("signup-section").style.display = "block";
+    document.getElementById("login-btn").classList.remove("active");
+    document.getElementById("signup-btn").classList.add("active");
+  }
+
+  // Toggle password visibility
+  function togglePassword(fieldId) {
+    const input = document.getElementById(fieldId);
+    input.type = input.type === "password" ? "text" : "password";
+  }
+
+  // Logout function
+  function logout() {
+    localStorage.removeItem("user");
+    document.getElementById("main-container").style.display = "none";
+    document.getElementById("auth-container").style.display = "block";
+  }
+
+  // Auto-show main page if logged in
+  window.addEventListener("load", () => {
+    if (localStorage.getItem("user")) {
+      document.getElementById("auth-container").style.display = "none";
+      document.getElementById("main-container").style.display = "block";
+      loadFeed();
+    }
+  });
+</script>
 </body>
 </html>
 
