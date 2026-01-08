@@ -1,0 +1,25 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #fafafa;
+  padding: 20px;
+}
+
+section {
+  background: white;
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  max-width: 400px;
+}
+
+input {
+  display: block;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+button {
+  padding: 8px;
+  cursor: pointer;
+}
+

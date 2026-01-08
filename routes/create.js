@@ -6,8 +6,8 @@ router.post("/", async (req, res) => {
   const { username, password, role } = req.body;
 
   const query = `
-    INSERT INTO users (username, password)
-    VALUES ('${username}', '${password}')
+    INSERT INTO users (username, password, role)
+    VALUES ('${username}', '${password}', '${role || "user"}')
     RETURNING *
   `;
 
