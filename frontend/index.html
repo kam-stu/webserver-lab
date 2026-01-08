@@ -2,130 +2,19 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Insecure Web Lab</title>
-
-  <style>
-    body {
-      font-family: sans-serif;
-      max-width: 800px;
-      margin: 40px auto;
-    }
-
-    section {
-      border: 1px solid #ccc;
-      padding: 15px;
-      margin-bottom: 20px;
-    }
-
-    input, button, textarea {
-      display: block;
-      margin: 6px 0;
-      width: 100%;
-    }
-
-    #feed {
-      border: 1px solid black;
-      padding: 10px;
-      min-height: 50px;
-    }
-  </style>
+  <title>Umagram</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <h1>🚨 Insecure Web Server Lab 🚨</h1>
+  <header>
+    <h1 class="logo">Umagram</h1>
+    <a href="add.html" class="add-post-btn">+ Add Post</a>
+  </header>
 
-  <!-- CREATE USER -->
-  <section>
-    <h2>Create User (plaintext passwords)</h2>
+  <main id="feed"></main>
 
-    <input id="create-username" placeholder="username">
-    <input id="create-password" placeholder="password">
-
-    <button onclick="createUser()">Create</button>
-    <div id="create-result"></div>
-  </section>
-
-  <!-- LOGIN -->
-  <section>
-    <h2>Login (SQL Injection vulnerable)</h2>
-
-    <input id="login-username" placeholder="username">
-    <input id="login-password" placeholder="password">
-
-    <button onclick="login()">Login</button>
-    <div id="login-result"></div>
-  </section>
-
-  <!-- POST MESSAGE -->
-  <section>
-    <h2>Post Message (Stored XSS)</h2>
-
-    <textarea id="message" placeholder="message"></textarea>
-    <button onclick="postMessage()">Post</button>
-  </section>
-
-  <!-- FEED -->
-  <section>
-    <h2>Feed (XSS executes here)</h2>
-    <div id="feed"></div>
-  </section>
-
-  <script>
-    async function createUser() {
-      const username = document.getElementById("create-username").value;
-      const password = document.getElementById("create-password").value;
-
-      const res = await fetch("/create", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username, password })
-      });
-
-      document.getElementById("create-result").innerText =
-        JSON.stringify(await res.json());
-    }
-
-    async function login() {
-      const username = document.getElementById("login-username").value;
-      const password = document.getElementById("login-password").value;
-
-      const res = await fetch("/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username, password })
-      });
-
-      document.getElementById("login-result").innerText =
-        JSON.stringify(await res.json());
-    }
-
-    async function postMessage() {
-      const message = document.getElementById("message").value;
-
-      await fetch("/post_message", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message })
-      });
-
-      loadFeed();
-    }
-
-    async function loadFeed() {
-      const res = await fetch("/feed");
-      const data = await res.json();
-
-      const feed = document.getElementById("feed");
-      feed.innerHTML = ""; // 💀 no sanitization
-
-      data.forEach(row => {
-        feed.innerHTML += row.message + "<br>";
-      });
-    }
-
-    loadFeed();
-  </script>
-
+  <script src="app.js"></script>
 </body>
 </html>
 
