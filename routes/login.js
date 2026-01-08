@@ -12,12 +12,12 @@ router.post("/", async (req, res) => {
   `;
 
   try {
-    const result = await pool.query(query);
+    const [rows] = await pool.query(query);
 
-    if (result.rows.length > 0) {
+    if (rows.length > 0) {
       res.json({
         success: true,
-        user: result.rows[0]
+        user: rows[0]
       });
     } else {
       res.json({ success: false });

@@ -1,0 +1,256 @@
+/* GENERAL BODY & DARK MODE */
+body {
+  font-family: Arial, sans-serif;
+  background: #121212;
+  color: #f1f1f1;
+  margin: 0;
+  padding: 0;
+}
+
+/* HEADER */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 20px;
+  background: #1f1f1f;
+  border-bottom: 1px solid #333;
+  min-height: 64px;
+  max-height: 64px;
+}
+
+header button {
+  padding: 6px 12px;
+  width: auto;
+  border-radius: 5px;
+  border: none;
+  background: #3897f0;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+header button:hover {
+  background: #3180d3;
+}
+
+/* SECTIONS & CONTAINERS */
+#auth-container, section {
+  background: #1f1f1f;
+  padding: 20px;
+  margin: 20px auto;
+  border-radius: 10px;
+  max-width: 500px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  box-sizing: border-box;
+}
+
+/* INPUTS */
+input {
+  display: block;
+  margin-bottom: 15px;
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #333;
+  background: #121212;
+  color: #f1f1f1;
+  box-sizing: border-box;
+}
+
+input::placeholder {
+  color: #888;
+}
+
+/* BUTTONS */
+button {
+  padding: 10px;
+  width: 100%;
+  border-radius: 5px;
+  border: none;
+  background: #3897f0;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  box-sizing: border-box;
+}
+
+button:hover {
+  background: #3180d3;
+}
+
+/* AUTH TOGGLE */
+#auth-toggle {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+#auth-toggle button {
+  width: 45%;
+  background: #333;
+  color: #f1f1f1;
+}
+
+#auth-toggle button.active {
+  background: #3897f0;
+}
+
+/* PASSWORD FIELD */
+.password-field {
+  position: relative;
+  width: 100%;
+}
+
+.password-field input {
+  width: 100%;
+  padding: 12px 40px 12px 12px; /* leave space for button */
+  border-radius: 5px;
+  border: 1px solid #333;
+  background: #121212;
+  color: #f1f1f1;
+  box-sizing: border-box;
+}
+
+.password-field input::placeholder {
+  color: #888;
+}
+
+/* Eye toggle button aligned to right */
+.toggle-password {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: #333;
+  color: #f1f1f1;
+  font-size: 14px;
+  cursor: pointer;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.toggle-password:hover {
+  background: #555;
+}
+
+/* CREATE POST FORM */
+.post-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Custom file input button */
+.custom-file-upload {
+  display: inline-block;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 5px;
+  background: #333;
+  color: #f1f1f1;
+  text-align: center;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+
+.custom-file-upload:hover {
+  background: #555;
+}
+
+.post-form input[type="file"] {
+  display: none;
+}
+
+/* FEED CARD */
+.feed-card {
+  background: #1f1f1f;
+  border: 1px solid #333;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+/* Card header */
+.feed-card-header {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #333;
+}
+
+.feed-card-header .avatar {
+  width: 40px;
+  height: 40px;
+  background: #555;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.feed-card-header .username {
+  font-weight: bold;
+}
+
+/* Post image */
+.feed-card img {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Caption below image */
+.feed-card-caption {
+  padding: 10px;
+  font-size: 14px;
+  line-height: 1.4;
+  border-top: 1px solid #333;
+  color: #e0e0e0;
+}
+
+/* HEADINGS */
+h1, h2 {
+  margin: 0 0 10px 0;
+}
+
+.upload-icon {
+  width: 35px;   /* adjust size */
+  height: 35px;
+  vertical-align: middle;
+  margin-right: 5px;
+}
+.logo-title,
+.header-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: bold;
+}
+.logo {
+  width: 128px;
+  height: 128px;
+  object-fit: contain;
+}
+
+#auth-container .logo-title {
+  justify-content: center;
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+.header-logo {
+  width: 128px;
+  height: 128px;
+  object-fit: contain;
+}
+
+.header-title {
+  font-size: 20px;
+}
+
