@@ -20,6 +20,7 @@
   "homepage": "https://github.com/kam-stu/webserver-lab#readme",
   "dependencies": {
     "express": "^5.2.1",
+    "mysql2": "^3.16.0",
     "pg": "^8.16.3"
   },
   "devDependencies": {

@@ -1,21 +1,28 @@
-const { Pool } = require("pg");
+const mysql = require("mysql2");
 
-// Intentionally hardcoded credentials for lab
-const pool = new Pool({
-  user: "kam",
-  host: "/var/run/postgresql",
-  database: "insecurelab",
-  port: 5432
+// Create a MySQL pool (similar to pg Pool)
+const pool = mysql.createPool({
+  host: "172.26.0.11",    // or the path to your MySQL server
+  user: "umagram",
+  password: "condorpasa<3",         // put your MySQL password here
+  database: "umagram_db",
+  waitForConnections: true,
+  connectionLimit: 10,
+  queueLimit: 0
 });
 
-// log when db is reachabe
-pool.on("connect", () => {
-  console.log("Connected to PostgreSQL");
-});
+// Optional: use promise wrapper for async/await
+const promisePool = pool.promise();
 
-pool.on("error", (err) => {
-  console.error("PostgreSQL error:", err);
-});
+// Test connection
+promisePool.getConnection()
+  .then(conn => {
+    console.log("Connected to MySQL");
+    conn.release();
+  })
+  .catch(err => {
+    console.error("MySQL connection error:", err);
+  });
 
-module.exports = pool;
+module.exports = promisePool; // export the promise pool for queries
 
