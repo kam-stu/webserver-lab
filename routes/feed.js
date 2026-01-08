@@ -20,7 +20,7 @@ router.get("/", async (req, res) => {
   `;
 
   try {
-    const result = await pool.query(query);
+    const [rows] = await pool.query(query);
 
     let html = `
       <html>
@@ -32,7 +32,7 @@ router.get("/", async (req, res) => {
     `;
 
     // 🚨 Stored XSS happens here
-    for (const row of result.rows) {
+    for (const row of rows) {
       html += `
         <div style="border:1px solid #ccc; padding:10px; margin:10px;">
           <strong>${row.username}</strong><br>

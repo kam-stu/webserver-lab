@@ -12,11 +12,11 @@ router.post("/", async (req, res) => {
   `;
 
   try {
-    const result = await pool.query(query);
+    const [rows] = await pool.query(query);
 
     res.json({
       success: true,
-      user: result.rows[0]
+      user: rows[0]
     });
   } catch (err) {
     // Intentionally leak DB errors
