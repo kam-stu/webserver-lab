@@ -9,7 +9,10 @@
 
 <!-- AUTH CONTAINER -->
 <div id="auth-container">
-  <h1>📸 Umagram</h1>
+  <h1 class="header-title">
+    <img src="./assets/logo.png" alt="Umagram Logo" class="logo">
+    <span>Umagram</span>
+  </h1>
 
   <!-- Toggle login/signup -->
   <div id="auth-toggle">
@@ -41,7 +44,10 @@
 <!-- MAIN CONTAINER -->
 <div id="main-container" style="display:none;">
   <header>
-    <h1>📸 Umagram</h1>
+    <h1 class="header-title">
+      <img src="./assets/logo.png" alt="Umagram Logo" class="header-logo">
+      <span>Umagram</span>
+    </h1>
     <button onclick="logout()">Logout</button>
   </header>
 
@@ -52,7 +58,8 @@
       <input id="caption" placeholder="What's on your mind?">
       <label class="custom-file-upload">
         <input id="image" type="file">
-        📷 Browse Image
+	<img src="./assets/upload.png" alt="Upload" class="upload-icon">
+	Browse Image
       </label>
       <button onclick="createPost()">Post</button>
     </div>
